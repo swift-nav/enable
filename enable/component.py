@@ -555,8 +555,11 @@ class Component(CoordinateBox, Interactor):
             damaged_regions = self._default_damaged_regions()
 
         if self_relative:
-            damaged_regions = [[region[0] + self.x, region[1] + self.y,
-                                region[2], region[3]] for region in damaged_regions]
+            for idx, region in enumerate(damaged_regions):
+                damaged_regions[idx][0] += self.x
+                damaged_regions[idx][1] += self.y
+                # damaged_regions = [[region[0] + self.x, region[1] + self.y,
+                #                     region[2], region[3]] for region in damaged_regions]
         for view in self.viewports:
             view.invalidate_draw(damaged_regions=damaged_regions, self_relative=True,
                                  view_relative=True)
