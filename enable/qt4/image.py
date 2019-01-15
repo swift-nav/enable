@@ -38,6 +38,8 @@ class Window(BaseWindow):
         rect = QtCore.QRect(0,0,w,h)
         painter = QtGui.QPainter(self.control)
         painter.drawImage(rect, image)
+        del image
+        del painter
 
 def font_metrics_provider():
     from kiva.fonttools import Font
