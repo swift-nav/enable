@@ -60,6 +60,10 @@ def configuration(parent_package='', top_path=None):
                                   ],
                         )
 
+    extra_link_args = []
+    for framework in frameworks:
+        extra_link_args.extend(['-framework', framework])
+
     config.add_extension("mac_context",
                          ["mac_context.c", "mac_context_cocoa.m"],
                          include_dirs = include_dirs,
