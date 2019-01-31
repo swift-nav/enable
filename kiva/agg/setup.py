@@ -139,7 +139,7 @@ def configuration(parent_package='', top_path=None):
     if sys.platform == 'darwin':
         define_macros = [('__DARWIN__', None)]
         macros = [('__DARWIN__', None)]
-        extra_link_args = ['-framework', 'Carbon']
+        extra_link_args = []# ['-framework', 'Carbon']
     else:
         define_macros = []
         macros = []
@@ -266,5 +266,7 @@ def configuration(parent_package='', top_path=None):
 
     config.add_data_dir('tests')
     config.add_data_files('*.txt', '*.bat')
+
+    print(plat_info)
 
     return config
